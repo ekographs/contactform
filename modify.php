@@ -31,7 +31,7 @@ if (isset($_POST['insert_row'])) {
     $email = $_POST['email'];
     $job_title = $_POST['job_title'];
     $telephone = $_POST['telephone'];
-    mysqli_query($conn, "insert into contact values('','$name','$age','$job_title','$telephone')");
+    mysqli_query($conn, "insert into contact values('','$name','$email','$job_title','$telephone')");
     echo mysqli_insert_id($mysqli);
     exit();
 }

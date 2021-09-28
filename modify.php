@@ -21,7 +21,7 @@ if (isset($_POST['edit_row'])) {
 
 if (isset($_POST['delete_row'])) {
     $row_no = $_POST['row_id'];
-    mysqli_query($conn, "delete from user_detail where id='$row_no'");
+    mysqli_query($conn, "delete from contact where id='$row_no'");
     echo "success";
     exit();
 }
@@ -31,7 +31,8 @@ if (isset($_POST['insert_row'])) {
     $email = $_POST['email'];
     $job_title = $_POST['job_title'];
     $telephone = $_POST['telephone'];
-    mysqli_query($conn, "insert into user_detail values('','$name','$age','$job_title','$telephone')");
+    mysqli_query($conn, "insert into contact values('','$name','$age','$job_title','$telephone')");
     echo mysqli_insert_id($mysqli);
     exit();
 }
+?>

@@ -3,7 +3,7 @@ function edit_row(id) {
   let email = document.getElementById('email' + id).innerHTML;
   let job_title = document.getElementById('job_title' + id).innerHTML;
   let telephone = document.getElementById('telephone' + id).innerHTML;
-    
+
   document.getElementById('name' + id).innerHTML =
     "<input type='text' id='name" + id + "' value='" + name + "'>";
   document.getElementById('email' + id).innerHTML =
@@ -20,7 +20,8 @@ function save_row(id) {
   let job_title = document.getElementById('job_title' + id).value;
   let telephone = document.getElementById('telephone' + id).value;
 
-  $.ajax({
+  $.ajax
+  ({
     type: 'post',
     url: 'modify.php',
     data: {

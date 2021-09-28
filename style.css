@@ -1,0 +1,52 @@
+.reghere {
+  margin-right: 10px;
+}
+
+.frmreg {
+  margin-left: 37%;
+  padding: 50px;
+  font-weight: bold;
+  text-align: left;
+  font-family: sans-serif, bold, Arial, Helvetica;
+  font-size: 14px;
+}
+
+form {
+  margin: 0 auto;
+  width: 600px;
+}
+form input {
+  padding: 10px;
+  margin-left: 10px;
+}
+form select {
+  background-color: #ffffff;
+  padding: 5px;
+}
+form label {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding-left: 140px;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}

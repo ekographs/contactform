@@ -74,7 +74,8 @@
                 
                 <td>
                 <input type='button' class="btn btn-outline-dark w-25 " id="edit_button<?php echo $row['id']; ?>" value="edit" onclick="edit_row('<?php echo $row['id']; ?>');">
-                <input type='button' class="btn btn-outline-success w-25" id="save_button<?php echo $row['id']; ?>" value="save" onclick="save_row('<?php echo $row['id']; ?>');">
+                <button type="button" class="btn btn-outline-success 2-25" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Open modal for @mdo</button>
+                <!-- <input type='button' class="btn btn-outline-success w-25" id="save_button<?php echo $row['id']; ?>" value="save" onclick="save_row('<?php echo $row['id']; ?>');"> -->
                 <input type='button' class="btn btn-outline-danger w-25" id="delete_button<?php echo $row['id']; ?>" value="delete" onclick="delete_row('<?php echo $row['id']; ?>');">
                 </td>
               </tr>

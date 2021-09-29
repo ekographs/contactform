@@ -12,60 +12,88 @@
     <title>Contact List</title>
   </head>
   <body>
-     <h1>Display user list using HTML and PHP</h1>
+     <!-- <center> -->
 
-    <table id="cus_table">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Job_Title</th>
-          <th>Telephone</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-<?php
+    <div class="container justify-content-md-center">
+      <h1>Display user list using HTML and PHP</h1>  
+      <form class="row gy-2 gx-3 align-items-center">
+        <div class="col-md-3" >
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="new_name" placeholder="Enter your Name" required>
+        </div>
 
-include "dbconnect.php"; // Using database connection file here
+        <div class="col-md-3" >
+          <label for="email" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="new_email" required placeholder="Enter your EmailAddress" >
+        </div>
 
-$select = mysqli_query($conn, "select * from contact"); // fetch data from database
-?>
- <tr id="new_row">
- <td><input type="text" id="new_name"></td>
- <td><input type="text" id="new_email"></td>
- <td><input type="text" id="new_job_title"></td>
- <td><input type="text" id="new_telephone"></td>
- <td><input type="button" value="Insert Row" onclick="insert_row();"></td>
-</tr>
-<?php
-while ($row = mysqli_fetch_array($select)) {
-    ?>
-  <tr id="row>">
-  <td id="name<?php echo $row['id']; ?>"><?php echo $row['name']; ?></td>
-  <td id="email<?php echo $row['id']; ?>"><?php echo $row['email']; ?></td>
-  <td id="job_title<?php echo $row['id']; ?>"><?php echo $row['job_title']; ?></td>
-  <td id="telephone<?php echo $row['id']; ?>"><?php echo $row['telephone']; ?></td>
-  <td>
-   <input type='button' class="edit_button" id="edit_button<?php echo $row['id']; ?>" value="edit" onclick="edit_row('<?php echo $row['id']; ?>');">
-   <input type='button' class="save_button" id="save_button<?php echo $row['id']; ?>" value="save" onclick="save_row('<?php echo $row['id']; ?>');">
-   <input type='button' class="delete_button" id="delete_button<?php echo $row['id']; ?>" value="delete" onclick="delete_row('<?php echo $row['id']; ?>');">
-  </td>
- </tr>
+        <div class="col-md-3" >
+          <label for="job_title" class="form-label">Job Title</label>
+          <input type="text" class="form-control" id="new_job_title" required placeholder="Enter your Job title" >
+        </div>
 
-<?php
-}
-?>
-</table>
-<?php mysqli_close($conn); // Close connection ?>
+        <div class="col-md-3" >
+          <label for="telephone" class="form-label">Telephone</label>
+          <input type="tel" class="form-control" id="new_telephone" required placeholder="Enter your Number">
+        </div>
 
-      </tbody>
-    </table>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="emscript.js"></script>
-    <script src="modifyrecords.js"></script>
+        <div class="col-12">
+          <button type="submit" class="btn btn-outline-primary" onclick="insert_row();">Insert Row</button>
+        </div>
+      </form>
+    </div><br>
 
 
+
+    <div class="container">
+      <table id="cus_table" class="table table-bordered border-primary" >
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Job_Title</th>
+            <th scope="col">Telephone</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <?php
+
+            include "dbconnect.php"; // Using database connection file here
+
+            $select = mysqli_query($conn, "select * from contact"); // fetch data from database
+
+            while ($row = mysqli_fetch_array($select)) {
+          ?>
+              <tr id="row>">
+                <td   class="table-secondary" id="name<?php echo $row['id']; ?>"><?php echo $row['name']; ?></td>
+                <td class="table-secondary" id="email<?php echo $row['id']; ?>"><?php echo $row['email']; ?></td>
+                <td class="table-secondary" id="job_title<?php echo $row['id']; ?>"><?php echo $row['job_title']; ?></td>
+                <td class="table-secondary" id="telephone<?php echo $row['id']; ?>"><?php echo $row['telephone']; ?></td>
+                
+                <td>
+                <input type='button' class="btn btn-outline-dark w-25 " id="edit_button<?php echo $row['id']; ?>" value="edit" onclick="edit_row('<?php echo $row['id']; ?>');">
+                <input type='button' class="btn btn-outline-success w-25" id="save_button<?php echo $row['id']; ?>" value="save" onclick="save_row('<?php echo $row['id']; ?>');">
+                <input type='button' class="btn btn-outline-danger w-25" id="delete_button<?php echo $row['id']; ?>" value="delete" onclick="delete_row('<?php echo $row['id']; ?>');">
+                </td>
+              </tr>
+
+          <?php
+            }
+          ?>
+        </tbody>  
+      </table>
+
+      <?php mysqli_close($conn); // Close connection ?>
+
+        
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+      <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+      <!-- <script type="text/javascript" src="emscript.js"></script> -->
+      <script src="modifyrecords.js"></script>
+
+      <!-- </center> -->
+    </div> 
   </body>
 </html>

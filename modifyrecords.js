@@ -5,20 +5,20 @@ function edit_row(id) {
   let telephone = document.getElementById('telephone' + id).innerHTML;
 
   document.getElementById('name' + id).innerHTML =
-    "<input type='text' id='name" + id + "' value='" + name + "'>";
+    "<input type='text' id='name_text" + id + "' value='" + name + "'>";
   document.getElementById('email' + id).innerHTML =
-    "<input type='email' id='email" + id + "' value='" + email + "'>";
+    "<input type='email' id='email_text" + id + "' value='" + email + "'>";
   document.getElementById('job_title' + id).innerHTML =
-    "<input type='text' id='job_title" + id + "' value='" + job_title + "'>";
+    "<input type='text' id='job_title_text" + id + "' value='" + job_title + "'>";
   document.getElementById('telephone' + id).innerHTML =
-    "<input type='text' id='telephone" + id + "' value='" + telephone + "'>";
+    "<input type='text' id='telephone_text" + id + "' value='" + telephone + "'>";
 }
 
 function save_row(id) {
-  let name = document.getElementById('name' + id).value;
-  let email = document.getElementById('email' + id).value;
-  let job_title = document.getElementById('job_title' + id).value;
-  let telephone = document.getElementById('telephone' + id).value;
+  let name = document.getElementById('name_text' + id).value;
+  let email = document.getElementById('email_text' + id).value;
+  let job_title = document.getElementById('job_title_text' + id).value;
+  let telephone = document.getElementById('telephone_text' + id).value;
 
   $.ajax
   ({
@@ -55,7 +55,7 @@ function delete_row(id) {
     },
     success: function (response) {
       if (response == 'success') {
-        var row = document.getElementById('row' + id);
+        let row = document.getElementById('row' + id);
         row.parentNode.removeChild(row);
       }
     },
@@ -63,10 +63,10 @@ function delete_row(id) {
 }
 
 function insert_row() {
-  let name = document.getElementById('name').value;
-  let email = document.getElementById('email').value;
-  let job_title = document.getElementById('job_title').value;
-  let telephone = document.getElementById('telephone').value;
+  let name = document.getElementById('new_name').value;
+  let email = document.getElementById('new_email').value;
+  let job_title = document.getElementById('new_job_title').value;
+  let telephone = document.getElementById('new_telephone').value;
 
   $.ajax({
     type: 'post',
@@ -116,10 +116,10 @@ function insert_row() {
           id +
           ");'/></td></tr>");
 
-        document.getElementById('name').value;
-        document.getElementById('email').value;
-        document.getElementById('job_title').value;
-        document.getElementById('telephone').value;
+        document.getElementById('new_name').value;
+        document.getElementById('new_email').value;
+        document.getElementById('new_job_title').value;
+        document.getElementById('new_telephone').value;
       }
     },
   });

@@ -5,7 +5,7 @@ $password = "";
 $dbname = "contactfrm";
 
 // Create connection
-$conn =  mysqli_connect($servername, $username, $password, $dbname);
+$conn = mysqli_connect($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -20,12 +20,11 @@ $sql = "INSERT INTO `contact` (`id`, `name`, `email`, `job_title`, `telephone`)
 VALUES ('0', '$name', '$email', '$job_title', '$telephone')";
 
 if ($conn->query($sql) === true) {
-    echo "New record created successfully";
-    
+    header("Location: ../contactform/display.php");
+    // header used to refresch the page.
+
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
 $conn->close();
-
-?>

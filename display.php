@@ -120,7 +120,7 @@ while ($row = mysqli_fetch_assoc($select)) {
                 <td class="table-outline-secondary" id="job_title"><?php echo $row['job_title']; ?></td>
                 <td class="table-outline-secondary" id="telephone"><?php echo $row['telephone']; ?></td>
                 <td class="" ><a class="btn btn-outline-success  col-12" href="edit.php?GetID=<?php echo $id ?>" role="button">Edit </a></td>
-                <td class="" ><a class="btn btn-outline-danger col-12" href="#" role="button">Delete</a></td>
+                <td class="" ><a class="btn btn-outline-danger col-12" href="delete.php?Del=<?php echo $id?>" role="button">Delete</a></td>
 
                 <td>
                 <!-- <input type='button' class="btn btn-outline-dark w-25 " id="edit_button<?php echo $row['id']; ?>" value="edit" onclick="edit_row('<?php echo $row['id']; ?>');"> -->

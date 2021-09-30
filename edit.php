@@ -38,22 +38,22 @@ while ($row = mysqli_fetch_assoc($select)) {
       <form class="row gy-2 gx-3 align-items-center" action="updatenow.php?ID=<?php echo $id ?>" method="POST">
         <div class="col-md-3" >
           <label for="name" class="form-label">Name</label>
-          <input type="text" class="form-control" name="name" id="name" placeholder="Enter your Name" value="<?php echo $name ?>" required>
+          <input type="text" class="form-control" name="name" id="name" placeholder="Enter your Name" value="<?php echo $name ?>">
         </div>
 
         <div class="col-md-3" >
           <label for="email" class="form-label">Email address</label>
-          <input type="email" class="form-control" name="email" id="email" placeholder="Enter your Email Address" value="<?php echo $email ?>" required >
+          <input type="email" class="form-control" name="email" id="email" placeholder="Enter your Email Address" value="<?php echo $email ?>" >
         </div>
 
         <div class="col-md-3" >
           <label for="job_title" class="form-label">Job Title</label>
-          <input type="text" class="form-control" name="job_title" id="job_title" placeholder="Enter your Job title" value="<?php echo $job_title ?>" required >
+          <input type="text" class="form-control" name="job_title" id="job_title" placeholder="Enter your Job title" value="<?php echo $job_title ?>" >
         </div>
 
         <div class="col-md-3" >
           <label for="telephone" class="form-label">Telephone</label>
-          <input type="tel" class="form-control" name="telephone" id="telephone" placeholder="Enter your Number" value="<?php echo $telephone ?>" required>
+          <input type="tel" class="form-control" name="telephone" id="telephone" placeholder="Enter your Number" value="<?php echo $telephone ?>" >
         </div>
 
         <div class="col-12">

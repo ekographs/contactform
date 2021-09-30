@@ -19,8 +19,21 @@ $telephone = $_POST['telephone'];
 $sql = "INSERT INTO `contact` (`id`, `name`, `email`, `job_title`, `telephone`)
 VALUES ('0', '$name', '$email', '$job_title', '$telephone')";
 
+// if (isset($_POST['edit_row'])) {
+//     $id = $_POST['id'];
+//     $name = $_POST['new_name'];
+//     $email = $_POST['new_email'];    
+//     $job_title = $_POST['new_job_title'];
+//     $telephone = $_POST['new_telephone'];
+
+//     $sql = "UPDATE `contact` SET `id`,`name`='".$name."',`email`='".$email."',`job_title`='".$job_title."',`telephone`=$telephone WHERE `id` =$id";
+//     echo "success";
+//     exit();
+// }
+
+
 if ($conn->query($sql) === true) {
-    header("Location: ../contactform/display.php");
+    header("Location:display.php");
     // header used to refresch the page.
 
 } else {

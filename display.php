@@ -16,8 +16,8 @@
 
     <div class="container justify-content-md-center">
       <h1>Display user list using HTML and PHP</h1>
-
-      <form class="row gy-2 gx-3 align-items-center" action="actionhere.php" method="post">
+      <!-- -->
+      <form class="row gy-2 gx-3 align-items-center" action="actionhere.php" method="POST">
         <div class="col-md-3" >
           <label for="name" class="form-label">Name</label>
           <input type="text" class="form-control" name="name" id="name" placeholder="Enter your Name" required>
@@ -25,7 +25,7 @@
 
         <div class="col-md-3" >
           <label for="email" class="form-label">Email address</label>
-          <input type="email" class="form-control" name="email" id="email" required placeholder="Enter your EmailAddress" >
+          <input type="email" class="form-control" name="email" id="email" required placeholder="Enter your Email Address" >
         </div>
 
         <div class="col-md-3" >
@@ -43,8 +43,8 @@
         </div>
       </form>
     </div><br>
-    
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -52,44 +52,48 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form class="" action="" method="">
+                    <form class="edit_row" action="update.php" method="POST">
                         <div class="mb-3">
                             <label for="name" class="col-form-label">Name:</label>
-                            <input type="text" class="form-control" id="name" required>
+                            <input type="text" name="name" class="form-control" id="newname" >
                         </div>
                         <div class="mb-3">
                             <label for="email" class="col-form-label">Email:</label>
-                            <input type="email" class="form-control" id="email" required>
+                            <input type="email" name="email" class="form-control" id="newemail" >
                         </div>
                         <div class="mb-3">
                             <label for="job_title" class="col-form-label">Job Title:</label>
-                            <input type="text" class="form-control" id="job_title" required>
+                            <input type="text" name="job_title" class="form-control" id="newjob_title" >
                         </div>
                         <div class="mb-3">
                             <label for="telephone" class="col-form-label">Telephone:</label>
-                            <input type="tel" class="form-control" id="telephone" required>
+                            <input type="tel" name="telephone" class="form-control" id="newtelephone" >
+                        </div>
+                        <div class="col-12">
+                         <button type="submit" id="edit_row" class="btn btn-outline-success" >Save</button>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-warning" data-bs-dismiss="modal">Exit</button>
-                    <button type="submit" class="btn btn-outline-success">Save</button>
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
 
     <div class="container">
-      <table id="cus_table" class="table table-bordered border-primary" >
-        <thead class="table-dark">
+      <table id="cus_table" class="table table-striped table table-bordered" >
+        <thead class="">
           <tr>
+            <th scope="col">ID</th>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Job_Title</th>
             <th scope="col">Telephone</th>
-            <th scope="col"></th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
           </tr>
         </thead>
 
@@ -100,19 +104,28 @@ include "dbconnect.php"; // Using database connection file here
 
 $select = mysqli_query($conn, "select * from contact"); // fetch data from database
 
-while ($row = mysqli_fetch_array($select)) {
+while ($row = mysqli_fetch_assoc($select)) {
+    $id = $row['id'];
+    $name = $row['name'];
+    $email = $row['email'];
+    $job_title = $row['job_title'];
+    $telephone = $row['telephone'];
+
     ?>
+
               <tr id="row>">
-                <td class="table-secondary" id="name<?php echo $row['id']; ?>"><?php echo $row['name']; ?></td>
-                <td class="table-secondary" id="email<?php echo $row['id']; ?>"><?php echo $row['email']; ?></td>
-                <td class="table-secondary" id="job_title<?php echo $row['id']; ?>"><?php echo $row['job_title']; ?></td>
-                <td class="table-secondary" id="telephone<?php echo $row['id']; ?>"><?php echo $row['telephone']; ?></td>
+                <td class="table-outline-secondary" id=""><?php echo $row['id']; ?></td>
+                <td class="table-outline-secondary" id="name"><?php echo $row['name']; ?></td>
+                <td class="table-outline-secondary" id="email"><?php echo $row['email']; ?></td>
+                <td class="table-outline-secondary" id="job_title"><?php echo $row['job_title']; ?></td>
+                <td class="table-outline-secondary" id="telephone"><?php echo $row['telephone']; ?></td>
+                <td class="" ><a class="btn btn-outline-success  col-12" href="edit.php?GetID=<?php echo $id ?>" role="button">Edit </a></td>
+                <td class="" ><a class="btn btn-outline-danger col-12" href="#" role="button">Delete</a></td>
 
                 <td>
                 <!-- <input type='button' class="btn btn-outline-dark w-25 " id="edit_button<?php echo $row['id']; ?>" value="edit" onclick="edit_row('<?php echo $row['id']; ?>');"> -->
-                <button type="button" class="btn btn-outline-success w-25" id="edit_button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="edit_row();" data-bs-whatever="@mdo">Edit</button>
-                <!-- <input type='button' class="btn btn-outline-success w-25" id="save_button<?php echo $row['id']; ?>" value="save" onclick="save_row('<?php echo $row['id']; ?>');"> -->
-                <input type='button' class="btn btn-outline-danger w-25" id="delete_button<?php echo $row['id']; ?>" value="delete" onclick="delete_row('<?php echo $row['id']; ?>');">
+                <!-- <button type="button" class="btn btn-outline-success w-25" id="edit_button" ?GetID=<?php echo $row['id']; ?> data-bs-toggle="modal" data-bs-target="#exampleModal"  data-bs-whatever="@mdo">Edit</button>
+                <input type='button' class="btn btn-outline-danger w-15" id="delete_button<?php echo $row['id']; ?>" value="delete" onclick="delete_row('<?php echo $row['id']; ?>');"> -->
                 </td>
               </tr>
 
@@ -122,7 +135,7 @@ while ($row = mysqli_fetch_array($select)) {
         </tbody>
       </table>
 
-      <?php mysqli_close($conn); // Close connection ?>
+      <?php $conn->close(); // Close connection ?>
 
 
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
